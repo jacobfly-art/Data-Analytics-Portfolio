@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Harper Fly - Data Science Portfolio</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary-purple: #5e2a84;
+            --dark-black: #1a1a1a;
+            --light-gray: #f4f4f9;
+            --mid-gray: #e0e0e0;
+            --text-gray: #333333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-gray);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            padding-top: 60px; /* Space for fixed navbar */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--dark-black);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 4px solid var(--primary-purple);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-purple);
+            color: var(--white);
+        }
+
+        /* Top & Bottom Contact Info */
+        .contact-bar {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Responsive Hero Section (Profile + Bio) */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .profile-container {
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 300px; /* Wide and round for desktop */
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--primary-purple);
+        }
+
+        .bio-text h1 {
+            color: var(--dark-black);
+            margin-top: 0;
+            font-size: 2.5rem;
+        }
+
+        .bio-text p {
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Layout for Hero */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            .profile-pic {
+                width: 100%; /* Full width on mobile */
+                height: auto;
+                aspect-ratio: 16/9; /* Keeps it wide */
+                border-radius: 20px; /* Rounded frame, not a circle on mobile */
+            }
+            nav ul {
+                flex-wrap: wrap;
+            }
+            nav ul li a {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Pitch Section */
+        .pitch-section {
+            background-color: var(--dark-black);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 8px solid var(--primary-purple);
+        }
+
+        .pitch-section h2 {
+            color: var(--primary-purple);
+            margin-top: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+            color: var(--white);
+            border-bottom: 2px solid var(--primary-purple);
+            padding-bottom: 5px;
+        }
+
+        /* Interactive Timeline */
+        .timeline-section {
+            margin-bottom: 3rem;
+        }
+
+        .timeline-instructions {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Flip Card CSS */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px; /* 3D effect */
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            border-radius: 8px;
+            border: 2px solid var(--mid-gray);
+        }
+
+        .flip-card-front {
+            background-color: var(--white);
+            color: var(--dark-black);
+        }
+
+        .flip-card-front h3 {
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .flip-card-front .date {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .flip-card-back {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            transform: rotateY(180deg);
+            border: none;
+        }
+
+        .flip-card-back p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contact-bar">
+        <span>Jacob Harper Fly</span> | 
+        <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
+        <a href="tel:7372409353">(737) 240-9353</a> | 
+        <span>San Antonio, TX</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#page1">Home</a></li>
+            <li><a href="#page2">Page 2</a></li>
+            <li><a href="#page3">Page 3</a></li>
+            <li><a href="#page4">Page 4</a></li>
+            <li><a href="#page5">Page 5</a></li>
+            <li><a href="#page6">Page 6</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <div id="page1" class="hero-section">
+            <div class="profile-container">
+                <img src="https://drive.google.com/file/d/1DlL316xsJmONN34GnbuqBtteLuAFqSw5/view?usp=drive_link" alt="Jacob Harper Fly" class="profile-pic">
+            </div>
+            <div class="bio-text">
+                <h1>Jacob Harper Fly</h1>
+                <p>I am seeking a full-time position to support me in the next chapter of my life. I have always loved analytical thinking, but this year, I fell in love with data science and the potential of its business applications. I am motivated to prove myself as an honorable, impact-driven hire.</p>
+            </div>
+        </div>
+
+        <div class="pitch-section">
+            <h2>The Analytics Advantage: Data with a Narrative</h2>
+            <p>In today's business landscape, generating data models is only half the battle; the real value lies in translating those complex models into actionable business strategy. With a foundational B.A. in Physics and Philosophy, advanced training in Data Science and Business Analytics from UT Austin, and professional experience as a writer and educator, I bridge the gap between technical execution and stakeholder communication.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Quantitative Rigor</h3>
+                    <p>Trained in physics and analytical philosophy, my approach to Data Mining, Business Stats, and SQL is rooted in deep logical frameworks and scientific methodologies.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Technical Execution</h3>
+                    <p>Equipped with modern tools from UT Austin's PGP-DSBA, including Python, Machine Learning, Tableau, and AI on Cloud architectures.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Storytelling</h3>
+                    <p>With a background as a playwright, essayist, and professional writing tutor, I excel at turning abstract numbers into compelling, understandable narratives that drive business change.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-section">
+            <h2>Experience Timeline</h2>
+            <p class="timeline-instructions">👆 Click on any event card below to flip it over and reveal more details about my experience.</p>
+            
+            <div class="timeline-grid">
+                
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Data Science & Business Analytics</h3>
+                            <span class="date">2025 - 2026</span>
+                            <p>The University of Texas at Austin</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Acquired high-level proficiencies in Python, Machine Learning, and Tableau, learning to directly apply predictive modeling to core business challenges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Professional Writing Tutor</h3>
+                            <span class="date">2022 - Present</span>
+                            <p>Northwest Vista College</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Honed expert-level communication skills, mastering the ability to explain complex, structural concepts to diverse audiences clearly and effectively.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>BA in Philosophy & Physics</h3>
+                            <span class="date">2022</span>
+                            <p>Southwestern University</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Developed a rigorous foundation in quantitative problem-solving, advanced mathematics, and logical analysis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Data Analyst</h3>
+                            <span class="date">2019</span>
+                            <p>Southwestern University</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Applied analytical skills in a professional university setting, managing data sets and extracting foundational insights.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Physics Tutor</h3>
+                            <span class="date">2018 - 2020</span>
+                            <p>Southwestern University</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Guided university students through high-level scientific and mathematical frameworks, reinforcing my own quantitative expertise.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-bar">
+        <span>Jacob Harper Fly</span> | 
+        <a href="https://linkedin.com">LinkedIn</a> | 
+        <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
+        <a href="tel:7372409353">(737) 240-9353</a>
+    </div>
+
+</body>
+</html>
