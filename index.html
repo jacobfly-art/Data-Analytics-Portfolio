@@ -5,76 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacob Harper Fly - Data Science & Business Analytics Portfolio</title>
     <style>
-        /* Color Palette */
-        :root {
-            --primary-purple: #5e2a84;
-            --dark-black: #1a1a1a;
-            --light-gray: #f4f4f9;
-            --mid-gray: #e0e0e0;
-            --text-gray: #333333;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--light-gray);
-            color: var(--text-gray);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            padding-top: 60px; /* Space for fixed navbar */
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: var(--dark-black);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 4px solid var(--primary-purple);
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: var(--primary-purple);
-            color: var(--white);
-        }
-
-        /* Top & Bottom Contact Info */
-        .contact-bar {
-            background-color: var(--primary-purple);
-            color: var(--white);
-            text-align: center;
-            padding: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .contact-bar a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .contact-bar a:hover {
-            text-decoration: underline;
-        }
 
         /* Main Container */
         .container {
@@ -259,12 +189,195 @@
             font-size: 0.95rem;
         }
 
+        .resume-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .resume-section h2 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .resume-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--secondary-color);
+        }
+
+        .resume-item p {
+            margin: 0;
+        }
+
+        /* Interactive Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-event {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .timeline-event:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-event::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -14px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default for interactivity */
+        }
+        
+        .timeline-event.active .timeline-content {
+            display: block;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+                /* Color Palette */
+        :root {
+            --primary-purple: #5e2a84;
+            --dark-black: #1a1a1a;
+            --light-gray: #f4f4f9;
+            --mid-gray: #e0e0e0;
+            --text-gray: #333333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-gray);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            padding-top: 60px; /* Space for fixed navbar */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--dark-black);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 4px solid var(--primary-purple);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-purple);
+            color: var(--white);
+        }
+
+
+        
+        /* Top & Bottom Contact Info */
+        .contact-bar {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-bar a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="contact-bar">
         <span>Jacob Harper Fly</span> | 
+        <a href="www.linkedin.com/in/jacob-fly-20758223b" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
         <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
         <a href="tel:7372409353">(737) 240-9353</a> | 
         <span>San Antonio, TX</span>
@@ -272,54 +385,62 @@
 
     <nav>
         <ul>
-            <li><a href="Fly Resume - General.pdf">Resume</a></li>
-            <li><a href="Python Fundamentals Project.html">Python Project</a></li>
-            <li><a href="Business Statistics Project.pdf">Business Statistics</a></li>
-            <li><a href="Supervised Learning Project.html">Supervised Learning</a></li>
-            <li><a href="Decision Tree Project.html">Decision Tree</a></li>
-            <li><a href="Intro To SQL Project.pdf">SQL</a></li>
+            <li><a href="Fly Resume - General.pdf" target="_blank" rel="noopener noreferrer">Resume - At A Glance</a></li>
+            <li><a href="Python Fundamentals Project.html" target="_blank" rel="noopener noreferrer">Python Project</a></li>
+            <li><a href="Business Statistics Project.pdf" target="_blank" rel="noopener noreferrer">Business Statistics</a></li>
+            <li><a href="Supervised Learning Project.html" target="_blank" rel="noopener noreferrer">Supervised Learning</a></li>
+            <li><a href="Decision Tree Project.html" target="_blank" rel="noopener noreferrer">Decision Tree</a></li>
+            <li><a href="Ensemble Methods Presentation.pdf" target="_blank" rel="noopener noreferrer">Ensemble Methods</a></li>
+            <li><a href="Unsupervised Learning Presentation.pdf" target="_blank" rel="noopener noreferrer">Unsupervised Learning</a></li>
+            <li><a href="Intro To SQL Project.pdf" target="_blank" rel="noopener noreferrer">SQL</a></li>
         </ul>
     </nav>
 
+
+
+    
     <div class="container">
         
-        <div id="page1" class="hero-section">
+        <div id="Home" class="hero-section">
             <div class="profile-container">
                 <img src="IMG_1482.jpeg" alt="Jacob Harper Fly" class="profile-pic">
             </div>
             <div class="bio-text">
                 <h1>Jacob Harper Fly</h1>
-                <p>I am seeking a full-time position to support me in the next chapter of my life. I have always loved analytical thinking, but this year, I fell in love with data science and the potential of its business applications. I am motivated to prove myself as an honorable, impact-driven hire.</p>
+                <p>Welcome to my portfoilo! Here, one can check out some of the projects I've worked on - organized by the techniques employed.<br><br>I am seeking a full-time position to support me in the next chapter of my life. I have always loved analytical thinking, but this year, I fell in love with data science and the potential of its business applications. I am motivated to prove myself as an honorable, impact-driven hire.</p>
             </div>
         </div>
 
         <div class="pitch-section">
-            <h2>The Analytics Advantage: Data with a Narrative</h2>
-            <p>In today's business landscape, generating data models is only half the battle; the real value lies in translating those complex models into actionable business strategy. With a foundational B.A. in Physics and Philosophy, advanced training in Data Science and Business Analytics from UT Austin, and professional experience as a writer and educator, I bridge the gap between technical execution and stakeholder communication. I fell in love with data science when I realized how something as beautiful as computational logic can do so much for the world and the people I love.</p>
+            <h2>My Assets</h2>
+            <p>I am not only have I prepared myself to transition into a new career, but I have proven that I am a fast learner who is able to handle a heavy workload while maintaining a work-life balance. The long and short of it is that I am highly motivated: with my foundational creative and academic ambitions fulfilled, I am now excited to focus entirely on settling down with long-term career in data science. I am looking for a professional home where I can apply my rigorous work ethic, time management, and critical thinking skills to build a stable foundation for my future.</p>
             
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>Quantitative Rigor</h3>
+                    <h3>BA in Physics & in Philosophy from Southwestern</h3>
                     <p>Trained in physics and analytical philosophy, my approach to Data Mining, Business Stats, and SQL is rooted in deep logical frameworks and scientific methodologies.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Technical Execution</h3>
+                    <h3>Post-Graduate Certificate from UT</h3>
                     <p>Equipped with modern tools from UT Austin's PGP-DSBA, including Python, Machine Learning, Tableau, and AI on Cloud architectures.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Data Storytelling</h3>
-                    <p>With a background as a playwright, essayist, and professional writing tutor, I excel at turning abstract numbers into compelling, understandable narratives that drive business change.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Highly Motivated</h3>
-                    <p>With my foundational creative and academic ambitions fulfilled, I am now excited to focus entirely on settling down with long-term career in data science. I am looking for a professional home where I can apply my rigorous work ethic, time management, and critical thinking skills to build a stable foundation for my future.</p>
+                    <h3>Leadership Experience</h3>
+                    <p>Served as a member of Staff Senate at Northwest Vista College. Inspired a team of actors and directors in the development of my play at The Overtime Theater. Led an new initative at Northwest Vista College to help students learn how to learn.</p>
                 </div>
             </div>
         </div>
 
+
+    <script>
+        function toggleTimeline(element) {
+            // Toggle active class to show/hide content
+            element.classList.toggle("active");
+    </script>
+        
         <div class="timeline-section">
-            <h2>Experience Timeline</h2>
-            <p class="timeline-instructions">👆 Click on any event card below to flip it over and reveal more details about my experience.</p>
+            <h2>My Skills</h2>
+            <p class="timeline-instructions">👆 Click on any event card below to flip it over and reveal more details my skills.</p>
             
             <div class="timeline-grid">
                 
@@ -393,12 +514,202 @@
 
     </div>
 
+
+        
+        <section class="resume-section">
+            <h2>Timeline</h2>
+            <p><em>Click on the milestones to expand details.</em></p>
+            <div class="timeline-container">
+                
+                <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">UT Data Science and Business Analytics Post-Grad</span>
+                    <span class="timeline-date">March 2026</span>
+                    <div class="timeline-content">
+                        <p>Engaged in weekly discussions with professor to learn subjects like Python, Machine Learning, and SQL.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Studied Senior Semniar Philosophy at UTSA</span>
+                    <span class="timeline-date">Fall of 2025</span>
+                    <div class="timeline-content">
+                        <p>Original play written, sold, and produced by The Overtime Theater in San Antonio for a four-weekend run.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Led A New Initative at Northwest Vista College</span>
+                    <span class="timeline-date">October 2025</span>
+                    <div class="timeline-content">
+                        <p>Began the Post-Graduate Program in Data Science and Business Analytics, completing comprehensive projects in Python, SQL, and machine learning models.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Became a member of Staff Senate at Northwest Vista College</span>
+                    <span class="timeline-date">June 2025</span>
+                    <div class="timeline-content">
+                        <p>Officially moved and set up residence in San Antonio, Texas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Watched the team I served perform my play</span>
+                    <span class="timeline-date">May 2025</span>
+                    <div class="timeline-content">
+                        <p>Traveled to Los Angeles for an intensive exploration of the entertainment industry, including multiple studio tours and a live taping.</p>
+                    </div>
+                </div>
+
+                 <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Completed a 300 page rough draft of my analytical philosophy</span>
+                    <span class="timeline-date">February 2025</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                 <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Created a series of workshops on the logic of Comedies at Northwest Vista College</span>
+                    <span class="timeline-date">August 2024</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Submitted my final draft of Thirteen Roses to The Overtime Theater</span>
+                    <span class="timeline-date">May 2024</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                 <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Spent a year volunteering at The Boerne Community Theatre</span>
+                    <span class="timeline-date">2023</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Started working as a writing tutor at Northwest Vista College</span>
+                    <span class="timeline-date">May 2021</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Studied The Dramatic Arts at Northwest Vista College</span>
+                    <span class="timeline-date">Fall 2022</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                 <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Earned a Bachelors in Physics from Southwestern University</span>
+                    <span class="timeline-date">May 2022</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>  
+
+                 <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Studied Film and Acting as well as Differential Equations at Northwest Vista College</span>
+                    <span class="timeline-date">May 2021</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+                
+                 <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Won the King Creativity Grant and produced short films</span>
+                    <span class="timeline-date">May 2021</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Earned a Bachelors in Philosophy from Southwestern University</span>
+                    <span class="timeline-date">December 2020</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                 <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Worked as a Data Analyist at Southwestern University</span>
+                    <span class="timeline-date">Summer 2019</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event right" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Started work as a physics tutor at Southwestern University</span>
+                    <span class="timeline-date">May 2021</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event left" onclick="toggleTimeline(this)">
+                    <span class="timeline-title">Started a high school quidditch team</span>
+                    <span class="timeline-date">September 2014</span>
+                    <div class="timeline-content">
+                        <p>Scheduled to begin the Master of Fine Arts program in Writing for Screen and Television.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+
+    <div>
+        <section class="resume-section">
+            <h2>Fun Facts About Me</h2>
+            <div class="resume-item">
+                <h3>Funny</h3>
+                <p>I love comedy and sold a play last year.</p>
+            </div>
+            <div class="resume-item">
+                <h3>Life Long Learner</h3>
+                <p>Took a couple Senior Seminar Contemporary Philosophy courses at UTSA last year; I've still got it.</p>
+            </div>
+            <div class="resume-item">
+                <h3>Bachelor of Arts in Physics and Philosophy</h3>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Experience</h2>
+            <div class="resume-item">
+                <h3>Playwright & Essayist</h3>
+                <p>Freelance</p>
+                <ul>
+                    <li>Wrote and sold the play "Thirteen Roses," produced by The Overtime Theater.</li>
+                    <li>Write analytical and creative essays on comedy and modern philosophy.</li>
+                </ul>
+            </div>
+            <div class="resume-item">
+                <h3>Writing Tutor and Staff Senate Member</h3>
+                <p>Community College (3.5 years)</p>
+                <ul>
+                    <li>Guided students in structuring academic arguments and creative writing.</li>
+                    <li>Served as a representative on the Staff Senate, organizing and advocating for community college staff.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
     <div class="contact-bar">
         <span>Jacob Harper Fly</span> | 
-        <a href="https://linkedin.com">LinkedIn</a> | 
+        <a href="www.linkedin.com/in/jacob-fly-20758223b" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
         <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
         <a href="tel:7372409353">(737) 240-9353</a>
     </div>
-
 </body>
 </html>
