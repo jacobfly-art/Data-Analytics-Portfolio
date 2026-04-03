@@ -222,16 +222,17 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
+        
         .timeline-container::after {
             content: '';
             position: absolute;
             width: 4px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-purple);
             top: 0;
             bottom: 0;
             left: 50%;
             margin-left: -2px;
+}
         }
 
         .timeline-event {
@@ -305,7 +306,11 @@
             --light-gray: #f4f4f9;
             --mid-gray: #e0e0e0;
             --text-gray: #333333;
-            --white: #c4a484;
+            --white: #d7c3a3;
+            --primary-color: var(--primary-purple);
+            --bg-color: var(--light-gray); 
+            --secondary-color: #3d1b57;
+            --accent-color: #550000;
         }
 
         body {
@@ -700,6 +705,7 @@
         function toggleTimeline(element) {
             // Toggle active class to show/hide content
             element.classList.toggle("active");
+        }
     </script>
 
 
