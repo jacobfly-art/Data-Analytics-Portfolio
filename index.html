@@ -47,28 +47,47 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile Layout for Hero */
+            /* Mobile Layout for Header and Hero */
         @media (max-width: 768px) {
+            .main-header {
+                position: relative; /* Removes sticky behavior on mobile */
+            }
+        
             .hero-section {
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem;
-            .main-header {
-                position: relative;
             }
+        
             .profile-pic {
                 width: 100%;
                 height: auto;
                 aspect-ratio: 16/9;
                 border-radius: 20px;
             }
+        
             nav ul {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; 
             }
+        
+            nav ul::-webkit-scrollbar {
+                display: none; 
+            }
+        
+            nav ul li {
+                flex: 0 0 auto; 
+            }
+        
             nav ul li a {
                 padding: 0.8rem 1rem;
+                white-space: nowrap;
             }
         }
+
 
         /* Pitch Section */
         .pitch-section {
