@@ -297,22 +297,17 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Times New Roman, sans-serif;
             background-color: var(--light-gray);
             color: var(--text-gray);
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            padding-top: 60px; /* Space for fixed navbar */
         }
 
         /* Navigation Bar */
         nav {
             background-color: var(--dark-black);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
             border-bottom: 4px solid var(--primary-purple);
         }
 
@@ -338,7 +333,14 @@
             color: var(--white);
         }
 
-
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
         
         /* Top & Bottom Contact Info */
         .contact-bar {
@@ -362,30 +364,28 @@
     </style>
 </head>
 <body>
-
-    <div class="contact-bar">
-        <span>Jacob Harper Fly</span> | 
-        <a href="www.linkedin.com/in/jacob-fly-20758223b" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
-        <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
-        <a href="tel:7372409353">(737) 240-9353</a> | 
-        <span>San Antonio, TX</span>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="Fly Resume - General.pdf" target="_blank" rel="noopener noreferrer">Resume - At A Glance</a></li>
-            <li><a href="Python Fundamentals Project.html" target="_blank" rel="noopener noreferrer">Python Project</a></li>
-            <li><a href="Business Statistics Project.pdf" target="_blank" rel="noopener noreferrer">Business Statistics</a></li>
-            <li><a href="Supervised Learning Project.html" target="_blank" rel="noopener noreferrer">Supervised Learning</a></li>
-            <li><a href="Decision Tree Project.html" target="_blank" rel="noopener noreferrer">Decision Tree</a></li>
-            <li><a href="Ensemble Methods Presentation.pdf" target="_blank" rel="noopener noreferrer">Ensemble Methods</a></li>
-            <li><a href="Unsupervised Learning Presentation.pdf" target="_blank" rel="noopener noreferrer">Unsupervised Learning</a></li>
-            <li><a href="Intro To SQL Project.pdf" target="_blank" rel="noopener noreferrer">SQL</a></li>
-        </ul>
-    </nav>
-
-
-
+    <header class="main-header">
+        <nav>
+            <ul>
+                <li><a href="Fly Resume - General.pdf" target="_blank" rel="noopener noreferrer">Resume - At A Glance</a></li>
+                <li><a href="Python Fundamentals Project.html" target="_blank" rel="noopener noreferrer">Python Project</a></li>
+                <li><a href="Business Statistics Project.pdf" target="_blank" rel="noopener noreferrer">Business Statistics</a></li>
+                <li><a href="Supervised Learning Project.html" target="_blank" rel="noopener noreferrer">Supervised Learning</a></li>
+                <li><a href="Decision Tree Project.html" target="_blank" rel="noopener noreferrer">Decision Tree</a></li>
+                <li><a href="Ensemble Methods Presentation.pdf" target="_blank" rel="noopener noreferrer">Ensemble Methods</a></li>
+                <li><a href="Unsupervised Learning Presentation.pdf" target="_blank" rel="noopener noreferrer">Unsupervised Learning</a></li>
+                <li><a href="Intro To SQL Project.pdf" target="_blank" rel="noopener noreferrer">SQL</a></li>
+            </ul>
+        </nav>
+    
+        <div class="contact-bar">
+            <span>Jacob Harper Fly</span> | 
+            <a href="www.linkedin.com/in/jacob-fly-20758223b" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
+            <a href="mailto:3842Jacob@gmail.com">3842Jacob@gmail.com</a> | 
+            <a href="tel:7372409353">(737) 240-9353</a> | 
+            <span>San Antonio, TX</span>
+        </div>
+    </header>
     
     <div class="container">
         
